@@ -1,0 +1,29 @@
+def checkRedundantBrackets(expression) :
+    if len(expression) == 0:
+        return
+    st = []
+    for i in expression:
+        if i == ")":
+            if len(st) == 0:
+                return True
+            else:
+                count = 0
+                while st.pop() != "(":
+                    count += 1
+                if count <= 1:
+                    return True
+                else:
+                    pass
+        else:
+            st.append(i)
+    
+    if len(st) == 0:
+        return False
+    else:
+        True
+    
+expression = input()    
+if checkRedundantBrackets(expression):
+    print("true")
+else:
+    print("false")
