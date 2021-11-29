@@ -1,0 +1,65 @@
+from sys import stdin
+
+def countBracketReversals(inputString):
+    stack=[]
+    count=0
+    count1=0
+    for i in inputString: 
+        
+        if len(stack)==0:
+            stack.append(i)
+        else:
+            if i=="{":
+                stack.append(i)
+            else:
+                if stack[-1]=="{":
+                    stack.pop()
+                else:
+                    stack.append(i)
+    for x in stack:
+        if x=="}":
+            count+=1
+        else:
+            count1+=1
+            
+    if count%2==0 and count1%2==0:
+        return count//2 + count1//2
+    elif count%2!=0 and count1%2!=0:
+        return count//2 + count1//2 + 2
+    else:
+        return -1
+        
+        
+                          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+s=input()
+#main
+print(countBracketReversals(s))
