@@ -1,0 +1,36 @@
+def stockSpan(price,n):
+    span = []
+    stack = []
+    top = -1
+    stack.append(0)
+    top += 1
+    span.append(1)
+    for i in range(1, n):
+            if price[i] <= price[stack[top]]:
+                stack.append(i)
+                top += 1
+                span.append(1)
+            else:
+                pr = price[i]
+                sp = 1
+                while stack:
+                    if pr > price[stack[top]]:
+                        sp += span[stack[top]]
+                        stack.pop()
+                        top -= 1
+                    else:
+                        break
+                span.append(sp) 
+                stack.append(i)
+                top += 1
+                       
+    return span                    
+                   
+    
+#### Implement Your Code Here
+
+n = int(input())
+price = [int(ele) for ele in input().split()]
+spans = stockSpan(price,n)
+for ele in spans:
+    print(ele,end= ' ')
